@@ -39,7 +39,8 @@ namespace Dcrew.ObjectPool
             }
         }
 
-        /// <summary>Returns a free instance of <typeparamref name="T"/> and auto-expands if there's none available</summary>
+        /// <summary>Returns a free instance of <typeparamref name="T"/> and auto-expands if there's none available
+        /// Call <see cref="Free(T)"/> on this object when you're done with it</summary>
         public static T Spawn()
         {
             T obj;
@@ -54,8 +55,7 @@ namespace Dcrew.ObjectPool
                 p.OnSpawn();
             return obj;
         }
-        /// <summary>Frees <paramref name="obj"/> for use when <see cref="Spawn"/> is called
-        /// Call <see cref="Free(T)"/> on <paramref name="obj"/> when you're done with it</summary>
+        /// <summary>Frees <paramref name="obj"/> for use when <see cref="Spawn"/> is called</summary>
         public static void Free(T obj)
         {
             lock (_arr)
